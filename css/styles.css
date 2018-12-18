@@ -11,7 +11,7 @@
 }
 
 .stage {
-    width: 80vw;
+    width: 70vw;
     height: 80vh;
     position: absolute;
     background-image: linear-gradient(cyan, magenta);
@@ -21,6 +21,11 @@
     border-radius: 25px;
 }
 
+.sidebar {
+    width: 16.6667%;
+    flex-direction: column;
+}
+
 .sidebar > .btn {
     width: 48px;
     height: 48px;
@@ -28,11 +33,6 @@
 
 .sidebar > .btn:hover {
     cursor: pointer;
-}
-
-.sidebar {
-    width: 16.6667%;
-    flex-direction: column;
 }
 
 .sidebar > .-restart {
