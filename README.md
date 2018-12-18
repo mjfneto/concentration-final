@@ -7,3 +7,4 @@ The project comprises steps in html, css and javascript.
 ## Currently developing
 
 Transition animations: card flip.
+Card hand out.
