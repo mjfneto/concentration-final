@@ -1,15 +1,5 @@
 
-.stage {
-    width: 80vw;
-    height: 80vh;
-    position: absolute;
-    background-image: linear-gradient(cyan, magenta);
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    display: flex;
-}
-
+.stage,
 .sidebar,
 .board,
 .grid,
@@ -20,9 +10,33 @@
     flex-wrap: wrap;
 }
 
+.stage {
+    width: 80vw;
+    height: 80vh;
+    position: absolute;
+    background-image: linear-gradient(cyan, magenta);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 25px;
+}
+
+.sidebar > .btn {
+    width: 48px;
+    height: 48px;
+}
+
+.sidebar > .btn:hover {
+    cursor: pointer;
+}
+
 .sidebar {
     width: 16.6667%;
     flex-direction: column;
+}
+
+.sidebar > .-restart {
+    margin-bottom: 20px;
 }
 
 .board {
@@ -40,6 +54,10 @@
     height: 25%;
 }
 
-.card > span {
+.card > .-icon {
     font-size: 2em;
+}
+
+.card > .-icon:hover {
+    cursor: pointer;
 }
