@@ -1,13 +1,9 @@
-var icons = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
-    "🛵", "🥤", "🌷", "🎴", "🏯", "🍕", "👾", "🦎",
-    "🐦", "🐕", "♈", "♉", "♊", "♋", "♌", "♍",
-    "♎", "♐", "♑", "♒", "♓", "⛎", "🙈", "🙉",
-    "🙊", "🚀"];
+var icons = ["🛵", "🌷", "🦎", "🐦", "🐕", "🙈", "🙉", "🙊"];
 
-function cardDealer () {
+function getRandomIndexes (length) {
     var biggerBox = [];
     function genRandom() {
-        while (biggerBox.length < icons.length) {
+        while (biggerBox.length < length) {
             console.log("genRandom has started");
             let rndm = Math.floor((Math.random() * 40));
             console.log("number is " + rndm);
@@ -19,7 +15,7 @@ function cardDealer () {
     var checkAndPlaceNumber = function(number) {
         console.log("checkAndPlaceNumber has started");
         console.log(number + " is caught");
-        if ((biggerBox.includes(number)) || (number >= icons.length))  {
+        if ((biggerBox.includes(number)) || (number >= length))  {
             console.log("The number is not fit")
             return genRandom();
         }
@@ -36,3 +32,4 @@ function cardDealer () {
     console.log(biggerBox);
 };
 
+getRandomIndexes(icons.length);
