@@ -1,27 +1,46 @@
 
-var icons = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵", "🛵", "🥤"];
+var icons = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
+    "🛵", "🥤", "🌷", "🎴", "🏯", "🍕", "👾", "🦎",
+    "🐦", "🐕", "♈", "♉", "♊", "♋", "♌", "♍",
+    "♎", "♐", "♑", "♒", "♓", "⛎", "🙈", "🙉",
+    "🙊", "🚀"];
 
-function randomCheck () {
-    let rndm = Math.floor((Math.random() * 20));
-    if (rndm > icons.length - 1) {
-        return randomCheck();
-    }    
-    else {
-        return rndm;
-    }
-}
-
-function cardHandler () {
-    for (var i=0; i < $('.card').length; i++) {
-        $('.card').eq(i).text(icons[i]);
-    }
+function cardDealer() {
+    $('.grid').html($('<div>', { class: 'card' }));
+    let firstBorn = $('.card').eq(0);
+    for (var i = 0; i < ((icons.length / 2) - 1); i++) {
+        firstBorn.clone().insertAfter(firstBorn);
+    };
+    for (var j = 0; j < (icons.length / 2); j++) {
+        $('.card').eq(j).text(icons[j]);
+    };
     $('.card').map(function () {
         $(this).clone().insertAfter($(this));
     });
-    for (var j=0; i < $('.card').length; i++) {
-        let x = $('.card:odd').detach();
-        x.insertAfter($('.card').eq(randomCheck()));
-    }
-}
+    let sliceDeck = $('.card').slice(randomShuffle()).detach();
+};
 
-cardHandler();
+cardDealer();
+
+function genRandomIndexes () {
+    var biggerBox = [];
+    function genRandom() {
+        while (biggerBox.length < icons.length) {
+            let rndm = Math.floor((Math.random() * 40));
+            return checkAndPlaceNumber(rndm);
+        };
+    };
+
+    var checkAndPlaceNumber = function(number) {
+        if ((biggerBox.includes(number)) || (number >= icons.length))  {
+            return genRandom();
+        }
+        else {
+            var box = number;
+            biggerBox.push(box);
+            return genRandom();
+        };
+    };
+
+    genRandom();
+};
