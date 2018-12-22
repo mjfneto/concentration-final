@@ -39,9 +39,9 @@ function cardHandler (array) {
     var board = [];
     array.forEach(function(item, index) {
         board[index] = icons[item];
+        $('<div class="card">').text(board[index]).appendTo($('.grid'));
+        console.log($('.card').length)
     });
-    console.log(board);
-    return board
 };
 
 cardHandler(getRandomIndexes(icons.length));
