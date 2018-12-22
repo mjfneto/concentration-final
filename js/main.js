@@ -56,4 +56,6 @@ function startGame() {
     });
 };
 
-startGame();
+$(document).ready(function() {
+    startGame();
+});
