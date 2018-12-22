@@ -11,7 +11,7 @@
 }
 
 .stage {
-    max-width: 80vw;
+    max-width: 500px;
     height: 80vh;
     position: absolute;
     background-image: linear-gradient(cyan, magenta);
@@ -47,14 +47,11 @@
     padding: 0.5em;
     justify-content: center;
     border-radius: 25px;
+    font-size: 150%;
 }
 
 .grid > .card:hover {
     cursor: pointer;
-}
-
-.grid .-icon {
-    font-size: 2em;
 }
 
 .container > .menu {
@@ -72,4 +69,3 @@
 .container .btn:hover {
     cursor: pointer;
 }
-
