@@ -44,4 +44,5 @@ function cardHandler (array) {
     });
 };
 
-cardHandler(getRandomIndexes(icons.length));
+// INVOKER is here
+// cardHandler(getRandomIndexes(icons.length));
