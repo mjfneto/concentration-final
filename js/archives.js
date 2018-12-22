@@ -28,3 +28,29 @@ function cardDealer() {
     let sliceDeck = $('.card').slice(randomShuffle()).detach();
 };
 //
+
+// GENERATES A RANDOM ARRAY WITH A LENGTH/NUMBER AS PARAMETER
+function getRandomIndexes (length) {
+    var biggerBox = [];
+    function genRandom() {
+        while (biggerBox.length < length) {
+            let rndm = Math.floor((Math.random() * 40));
+            return checkAndPlaceNumber(rndm);
+        };
+    };
+
+    var checkAndPlaceNumber = function(number) {
+        if ((biggerBox.includes(number)) || (number >= length))  {
+            return genRandom();
+        }
+        else {
+            var box = number;
+            biggerBox.push(box);
+            return genRandom();
+        };
+    };
+
+    genRandom();
+    return biggerBox;
+};
+//
