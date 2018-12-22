@@ -44,5 +44,18 @@ function cardHandler (array) {
     });
 };
 
-// INVOKER is here
-// cardHandler(getRandomIndexes(icons.length));
+function startGame() {
+    $('.-start').click(function() {
+        cardHandler(getRandomIndexes(icons.length));
+        $('.-start').off( "click");
+        let trigger = true;
+        if (trigger === true) {
+            $('.-restart').click(function() {
+                $('.card').remove();
+                cardHandler(getRandomIndexes(icons.length));
+            });
+        };    
+    });
+};
+
+startGame();
