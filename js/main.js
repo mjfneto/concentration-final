@@ -10,7 +10,7 @@ var icons = ["🛵", "🌷", "🦎", "🐦", "🐕", "🙈", "🙉", "🙊"];
 var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
  "🐕", "🐕", "🙈", "🙈", "🙉", "🙉", "🙊", "🙊"];
 
-function getRandomIndexes (length) {
+ function getRandomIndexes (length) {
     var biggerBox = [];
     function genRandom() {
         while (biggerBox.length < length) {
@@ -46,13 +46,21 @@ function startGame() {
     $('.-start').click(function() {
         cardHandler(getRandomIndexes(icons.length));
         $('.-start').off( "click");
+        flipCard();
         let trigger = true;
         if (trigger === true) {
             $('.-restart').click(function() {
                 $('.card').remove();
                 cardHandler(getRandomIndexes(icons.length));
+                flipCard();
             });
         };    
+    });
+};
+
+function flipCard () {
+    $('.card').click(function( event ) {
+        $(event.target).css("opacity", 0);
     });
 };
 
