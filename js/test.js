@@ -1,4 +1,6 @@
-var icons = ["🛵", "🌷", "🦎", "🐦", "🐕", "🙈", "🙉", "🙊"];
+
+var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
+ "🐕", "🐕", "🙈", "🙈", "🙉", "🙉", "🙊", "🙊"];
 
 function getRandomIndexes (length) {
     var biggerBox = [];
@@ -30,6 +32,16 @@ function getRandomIndexes (length) {
     genRandom();
     console.log(biggerBox.length);
     console.log(biggerBox);
+    return biggerBox;
 };
 
-getRandomIndexes(icons.length);
+function cardHandler (array) {
+    var board = [];
+    array.forEach(function(item, index) {
+        board[index] = icons[item];
+    });
+    console.log(board);
+    return board
+};
+
+cardHandler(getRandomIndexes(icons.length));
