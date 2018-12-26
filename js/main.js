@@ -1,11 +1,9 @@
 
-var iconsThirtytwo = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
-    "🛵", "🥤", "🌷", "🎴", "🏯", "🍕", "👾", "🦎",
-    "🐦", "🐕", "♈", "♉", "♊", "♋", "♌", "♍",
-    "♎", "♐", "♑", "♒", "♓", "⛎", "🙈", "🙉",
-    "🙊", "🚀"];
-
-var icons = ["🛵", "🌷", "🦎", "🐦", "🐕", "🙈", "🙉", "🙊"];
+// var iconsThirtytwo = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
+//     "🛵", "🥤", "🌷", "🎴", "🏯", "🍕", "👾", "🦎",
+//     "🐦", "🐕", "♈", "♉", "♊", "♋", "♌", "♍",
+//     "♎", "♐", "♑", "♒", "♓", "⛎", "🙈", "🙉",
+//     "🙊", "🚀"];
 
 var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
     "🐕", "🐕", "🙈", "🙈", "🙉", "🙉", "🙊", "🙊"];
@@ -42,7 +40,7 @@ function cardHandler(array) {
     var board = [];
     array.forEach(function (item, index) {
         board[index] = icons[item];
-        $('<div class="card">').text(board[index]).appendTo($('.item').eq(index));
+        $('<div class="card reveal">').text(board[index]).appendTo($('.item').eq(index));
     });
 };
 
@@ -64,8 +62,9 @@ function playGame() {
 
 function flipCardEvaluate() {
     var shown = [];
-    $('.grid').on("click", ".card", function (event) {
+    $('.item').on("click", function (event) {
         var target = $(event.target);
-
+        target.toggleClass("rotate");
+        target.find(".card").toggleClass("reveal");
     });
 };
