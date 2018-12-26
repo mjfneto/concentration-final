@@ -8,9 +8,13 @@ var iconsThirtytwo = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
 var icons = ["🛵", "🌷", "🦎", "🐦", "🐕", "🙈", "🙉", "🙊"];
 
 var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
- "🐕", "🐕", "🙈", "🙈", "🙉", "🙉", "🙊", "🙊"];
+    "🐕", "🐕", "🙈", "🙈", "🙉", "🙉", "🙊", "🙊"];
 
- function getRandomIndexes (length) {
+$(document).ready(function () {
+    playGame();
+});
+
+function getRandomIndexes(length) {
     var biggerBox = [];
     function genRandom() {
         while (biggerBox.length < length) {
@@ -19,8 +23,8 @@ var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
         };
     };
 
-    var checkAndPlaceNumber = function(number) {
-        if ((biggerBox.includes(number)) || (number >= length))  {
+    var checkAndPlaceNumber = function (number) {
+        if ((biggerBox.includes(number)) || (number >= length)) {
             return genRandom();
         }
         else {
@@ -34,36 +38,34 @@ var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
     return biggerBox;
 };
 
-function cardHandler (array) {
+function cardHandler(array) {
     var board = [];
-    array.forEach(function(item, index) {
+    array.forEach(function (item, index) {
         board[index] = icons[item];
         $('<div class="card">').text(board[index]).appendTo($('.grid'));
     });
 };
 
-function startGame() {
-    $('.-start').click(function() {
+function playGame() {
+    $('.-start').click(function () {
         cardHandler(getRandomIndexes(icons.length));
-        $('.-start').off( "click");
-        flipCard();
+        $('.-start').off("click");
+        flipCardEvaluate();
         let trigger = true;
         if (trigger === true) {
-            $('.-restart').click(function() {
+            $('.-restart').click(function () {
                 $('.card').remove();
                 cardHandler(getRandomIndexes(icons.length));
-                flipCard();
+                flipCardEvaluate();
             });
-        };    
+        };
     });
 };
 
-function flipCard () {
-    $('.card').click(function( event ) {
-        $(event.target).css("opacity", 0);
+function flipCardEvaluate() {
+    var shown = [];
+    $('.card').one("click", function (event) {
+        var target = $(event.target);
+        target.toggle();
     });
 };
-
-$(document).ready(function() {
-    startGame();
-});
