@@ -64,8 +64,8 @@ function playGame() {
 
 function flipCardEvaluate() {
     var shown = [];
-    $('.card').one("click", function (event) {
+    $('.grid').on("click", ".card", function (event) {
         var target = $(event.target);
-        target.toggle();
+
     });
 };
