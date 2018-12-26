@@ -47,6 +47,9 @@
     justify-content: center;
     border-radius: 25px;
     font-size: 150%;
+    background-image: linear-gradient(magenta, cyan);
+    animation-name: flip;
+    animation-duration: 1s;
 }
 
 .grid > .card:hover {
