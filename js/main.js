@@ -42,7 +42,7 @@ function cardHandler(array) {
     var board = [];
     array.forEach(function (item, index) {
         board[index] = icons[item];
-        $('<div class="card">').text(board[index]).appendTo($('.grid'));
+        $('<div class="card">').text(board[index]).appendTo($('.-item').eq(index));
     });
 };
 
