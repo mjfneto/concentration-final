@@ -55,6 +55,7 @@ function playGame() {
         if (trigger === true) {
             $('.-restart').click(function () {
                 $('.flip-card-back').detach();
+                $('.flip-card').removeAttr("style");
                 $('.flip-card.rotate').toggleClass("rotate");
                 cardHandler(getRandomIndexes(icons.length));
             });
