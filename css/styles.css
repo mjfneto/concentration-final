@@ -52,7 +52,7 @@
     transform: rotateY(180deg);
 }
 
-.reveal {
+.veil {
     visibility: hidden;
 }
 
@@ -60,7 +60,7 @@
     text-align: center;
     width: auto;
     font-size: 100%;
-    transition: visibility 150ms ease-in-out;
+    transition: visibility 125ms;
 }
 
 .board > .menu {

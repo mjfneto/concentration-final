@@ -40,21 +40,21 @@ function cardHandler(array) {
     var board = [];
     array.forEach(function (item, index) {
         board[index] = icons[item];
-        $('<div class="card reveal">').text(board[index]).appendTo($('.item').eq(index));
+        $('<div class="card veil">').text(board[index]).appendTo($('.item').eq(index));
     });
 };
 
 function playGame() {
     $('.-start').click(function () {
         cardHandler(getRandomIndexes(icons.length));
+        $('.item').removeClass("veil");
         $('.-start').off("click");
         flipCardEvaluate();
         let trigger = true;
         if (trigger === true) {
             $('.-restart').click(function () {
-                $('.card').remove();
+                $('.card').detach();
                 cardHandler(getRandomIndexes(icons.length));
-                flipCardEvaluate();
             });
         };
     });
@@ -62,9 +62,10 @@ function playGame() {
 
 function flipCardEvaluate() {
     var shown = [];
+    console.log("Hey");
     $('.item').on("click", function (event) {
         var target = $(event.target);
-        target.toggleClass("rotate");
-        target.find(".card").toggleClass("reveal");
+        $(this).toggleClass("rotate");
+        $(this).children().toggleClass("veil");
     });
 };
