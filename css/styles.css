@@ -35,6 +35,8 @@
   position: relative;
   width: 90%;
   height: 90%;
+  align-self: center;
+  justify-self: center;
   text-align: center;
   transition: transform 0.6s;
   transform-style: preserve-3d;
@@ -46,11 +48,6 @@
 }
 
 .flip-card > .flip-card-front {
-    align-items: center;
-    justify-self: center;
-    height: 80%;
-    width: 80%;
-    max-width: 100%;
     background-image: linear-gradient(magenta, cyan);
     border: solid 2px #fff;
     box-shadow: 6px 7px 30px -11px rgba(48,2,48,1);
@@ -78,7 +75,6 @@
 .flip-card > .flip-card-back {
   background-color: #fff;
   color: white;
-  transform: rotateY(180deg);
   border-radius: 15px;
 }
 
