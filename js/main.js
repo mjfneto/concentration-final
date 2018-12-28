@@ -10,6 +10,7 @@ var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
 
 $(document).ready(function () {
     playGame();
+    window.alert("Welcome to Concentration! Press \"start\" to begin.");
 });
 
 function getRandomIndexes(length) {
@@ -38,29 +39,28 @@ function getRandomIndexes(length) {
 
 function cardHandler(array) {
     var board = [];
+    var shuffledDeck = [];
     array.forEach(function (item, index) {
+        var frontBack = [];
         board[index] = icons[item];
-        $('<div class="flip-card-back rotate">').text(board[index]).insertAfter($('.flip-card-front').eq(index));
+        $('<div class="flip-card">').appendTo($('.grid'));
+        frontBack.push($('<div class="flip-card-front">').text("🧠"));
+        frontBack.push($('<div class="flip-card-back rotate">').text(board[index]));
+        shuffledDeck.push(frontBack);
     });
+    return shuffledDeck;
 };
 
 function playGame() {
-    $('.flip-card').css("visibility", "hidden");
-    window.alert("Welcome to Concentration! Press \"start\" to begin.");
     $('.-start').click(function () {
-        cardHandler(getRandomIndexes(icons.length));
-        $('.flip-card').removeAttr("style");
-        $('.-start').off("click");
+        $('.-start').text("↺");
+        $('.flip-card').remove();
+        var cardsToBePlaced = cardHandler(getRandomIndexes(icons.length));
+        cardsToBePlaced.forEach(function (item, index) {
+            item[0].appendTo($('.flip-card').eq(index));
+            item[1].appendTo($('.flip-card').eq(index));
+        });
         flipCardEvaluate();
-        let trigger = true;
-        if (trigger === true) {
-            $('.-restart').click(function () {
-                $('.flip-card-back').detach();
-                $('.flip-card').removeAttr("style");
-                $('.flip-card.rotate').toggleClass("rotate");
-                cardHandler(getRandomIndexes(icons.length));
-            });
-        };
     });
 };
 
@@ -69,7 +69,6 @@ function flipCardEvaluate() {
     $('.flip-card').on("click", function () {
         $(this).toggleClass("rotate");
         shown.push($(this).find("div.flip-card-back").text());
-        console.log(shown);
         if ((shown.length > 2) && (shown[0] !== shown[1])) {
             shown = [];
             $('.flip-card.rotate').toggleClass("rotate");
@@ -77,7 +76,6 @@ function flipCardEvaluate() {
         else if ((shown.length >= 2) && (shown[0] === shown[1])) {
             shown = [];
             $('.flip-card.rotate').css("visibility", "hidden").removeClass("rotate");
-            console.log($('.grid > div[style]').length);
             if ($('.grid > div[style]').length >= 16) {
                 window.alert("Congratulations! You have found all the " + $('.grid > div[style]').length/2 + " pairs of cards.");
             }
