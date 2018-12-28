@@ -1,3 +1,4 @@
+
 .board,
 .grid,
 .item,
@@ -22,6 +23,7 @@
     height: 80vh;
     padding: 25px;
     border-radius: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
 }
 
 .board > .grid {
@@ -52,7 +54,6 @@
 
 .flip-card > .flip-card-front {
     background-image: linear-gradient(magenta, cyan);
-    border: solid 2px #fff;
     box-shadow: 6px 7px 30px -11px rgba(48,2,48,1);
     border-radius: 15px;
     transition: transform 1s;
@@ -61,15 +62,49 @@
 .flip-card > .flip-card-back {
   background-color: #fff;
   border-radius: 15px;
-  border: 2px solid #fff;
 }
 
 .flip-card > .flip-card-front,
 .flip-card > .flip-card-back {
+    font-size: 3em;
+    box-sizing: border-box;
   position: absolute;
   width: 100%;
   height: 100%;
+  padding: 15% 0;
   backface-visibility: hidden;
+}
+
+@media (max-width: 768px) {
+    .flip-card > .flip-card-front,
+    .flip-card > .flip-card-back {
+        font-size: 2.5em;
+        padding: 30% 0;
+    }
+}
+
+@media (max-width: 640px) {
+    .flip-card > .flip-card-front,
+    .flip-card > .flip-card-back {
+        font-size: 2em;
+        padding: 45% 0;
+    }
+}
+
+@media (max-width: 450px) {
+    .flip-card > .flip-card-front,
+    .flip-card > .flip-card-back {
+        font-size: 1.5em;
+        padding: 75% 0;
+    }
+}
+
+@media (max-width: 360px) {
+    .flip-card > .flip-card-front,
+    .flip-card > .flip-card-back {
+        font-size: 1.5em;
+        padding: 90% 0;
+    }
 }
 
 .board > .menu {
