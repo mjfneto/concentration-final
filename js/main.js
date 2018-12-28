@@ -10,7 +10,6 @@ var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
 
 $(document).ready(function () {
     playGame();
-    $('.flip-card').css("visibility", "hidden");
 });
 
 function getRandomIndexes(length) {
@@ -46,6 +45,8 @@ function cardHandler(array) {
 };
 
 function playGame() {
+    $('.flip-card').css("visibility", "hidden");
+    window.alert("Welcome to Concentration! Press \"start\" to begin.");
     $('.-start').click(function () {
         cardHandler(getRandomIndexes(icons.length));
         $('.flip-card').removeAttr("style");
@@ -78,7 +79,7 @@ function flipCardEvaluate() {
             $('.flip-card.rotate').css("visibility", "hidden").removeClass("rotate");
             console.log($('.grid > div[style]').length);
             if ($('.grid > div[style]').length >= 16) {
-                window.alert("You have found all the " + $('.grid > div[style]').length + " cards");
+                window.alert("Congratulations! You have found all the " + $('.grid > div[style]').length/2 + " pairs of cards.");
             }
         }
     });
