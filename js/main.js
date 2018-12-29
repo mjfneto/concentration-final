@@ -10,7 +10,7 @@ var icons = ["🛵", "🛵", "🌷", "🌷", "🦎", "🦎", "🐦", "🐦",
 
 $(document).ready(function () {
     $('.menu').mousedown(handle_mousedown);
-    window.alert("Welcome to Concentration! Press \"start\" to begin.");
+    window.alert("Welcome to Concentration! Pull the pink ribbon to begin.");
 });
 
 function getRandomIndexes(length) {
