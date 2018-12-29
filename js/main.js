@@ -82,17 +82,11 @@ function flipCardEvaluate() {
 
 function handle_mousedown(e){
     window.my_dragging = {};
-    console.log("e.pageX is " + e.pageX);
     my_dragging.pageX0 = e.pageX;
-    console.log("my_dragging.pageX0 is " + my_dragging.pageX0);
     my_dragging.elem = this;
     my_dragging.offset0 = $(this).offset();
-    console.log("my_dragging.offset0.left is " + my_dragging.offset0.left);
     function handle_dragging(e){
-        console.log(("e.pageX is " + e.pageX));
-        console.log("e.pageX - my_dragging.pageX0 \= " + (e.pageX - my_dragging.pageX0));
         var left = my_dragging.offset0.left + (e.pageX - my_dragging.pageX0);
-        console.log("var left is " + left);
         $(my_dragging.elem)
         .offset({left: left});
         if ($(my_dragging.elem).offset().left <= (95/100 * my_dragging.offset0.left)) {
