@@ -92,6 +92,7 @@ function handle_mousedown(e){
         if ($(my_dragging.elem).offset().left <= (95/100 * my_dragging.offset0.left)) {
             $(my_dragging.elem).offset({left: my_dragging.offset0.left});
             $('.menu').mousedown(handle_mousedown);
+            startTimer();
             playGame();
         };
     }
@@ -104,3 +105,13 @@ function handle_mousedown(e){
     .on('mouseup', handle_mouseup)
     .on('mousemove', handle_dragging);
 }
+
+function startTimer() {
+    var date = new Date;
+    var timerDisplay = $('.timer').find("p");
+    setInterval(goesTheClock, 1000);
+    function goesTheClock() {
+        tickTock = Math.floor((new Date - date) / 1000);
+        timerDisplay.text(tickTock);
+    };
+};

@@ -112,7 +112,7 @@ body {
 }
 
 .menu {
-    position: absolute;
+    position: fixed;
     top: 50%;
     right: 0%;
     transform: translate(0%, -50%);
@@ -143,4 +143,30 @@ body {
 
 .rotate {
     transform: rotateY(180deg);
+}
+
+.timer {
+    position: absolute;
+    box-sizing: border-box;
+    top: 25%;
+    right: 6%;
+    transform: translate(0%, -50%);
+    width: 10vw;
+    height: 10vh;
+    text-align: center;
+    background-image: linear-gradient(cyan, magenta);
+    border: none;
+    border-radius: 25px;
+    box-shadow: 6px 7px 30px -11px rgba(48,2,48,1);
+    border-right: none;
+    text-align: left;
+    line-height: 100%;
+    text-transform: uppercase;
+    color: #fff;
+}
+
+.timer > p {
+    text-align: center;
+    width: 100%;
+    font-size: 28px;
 }
