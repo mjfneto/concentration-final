@@ -53,7 +53,6 @@ function cardHandler(array) {
 
 function playGame() {
     $('.start-button').click(function () {
-        $('.start-button').text("↺");
         $('.flip-card').remove();
         var cardsToBePlaced = cardHandler(getRandomIndexes(icons.length));
         cardsToBePlaced.forEach(function (item, index) {
