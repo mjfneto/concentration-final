@@ -147,26 +147,25 @@ body {
 
 .timer {
     position: absolute;
-    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
     top: 25%;
     right: 6%;
     transform: translate(0%, -50%);
-    width: 10vw;
-    height: 10vh;
     text-align: center;
     background-image: linear-gradient(cyan, magenta);
     border: none;
     border-radius: 25px;
     box-shadow: 6px 7px 30px -11px rgba(48,2,48,1);
     border-right: none;
-    text-align: left;
-    line-height: 100%;
-    text-transform: uppercase;
-    color: #fff;
 }
 
 .timer > p {
+    position: relative;
+    display: inline-block;
     text-align: center;
+    margin: 0 1vw;
     width: 100%;
-    font-size: 28px;
+    font-size: 4vw;
+    color: #fff;
 }
