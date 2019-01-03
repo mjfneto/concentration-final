@@ -24,7 +24,7 @@ body {
     position: relative;
     width: 50vw;
     height: 80vh;
-    padding: 25px;
+    padding: 2vw;
     border: none;
     border-radius: 25px;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.5);
@@ -39,8 +39,8 @@ body {
 
 .flip-card {
   position: relative;
-  width: 90%;
-  height: 90%;
+  width: 12vw;
+  height: 12vw;
   align-self: center;
   justify-self: center;
   text-align: center;
@@ -61,6 +61,7 @@ body {
     box-shadow: 6px 7px 30px -11px rgba(48,2,48,1);
     border-radius: 15px;
     transition: transform 1s;
+    padding-top: 5%;
 }
 
 .flip-card > .flip-card-back {
@@ -70,12 +71,10 @@ body {
 
 .flip-card > .flip-card-front,
 .flip-card > .flip-card-back {
-    font-size: 3em;
     box-sizing: border-box;
   position: absolute;
   width: 100%;
-  height: 100%;
-  padding: 15% 0;
+  height: 95%;
   backface-visibility: hidden;
   font-size: 7vw;
 }
