@@ -67,7 +67,8 @@ body {
   font-size: 7vw;
 }
 
-.start-button {
+.start-button,
+.restart-button {
   border: none;
   background-color: transparent;
   font-size: 4vw;
@@ -75,7 +76,20 @@ body {
   text-transform: uppercase;
 }
 
-.start-button:hover {
+.timer.-active > .start-button {
+  display: none;
+}
+
+.timer > .restart-button {
+  display: none;
+}
+
+.timer.-active > .restart-button {
+  display: block;
+}
+
+.start-button:hover,
+.restart-button:hover {
   cursor: pointer;
 }
 

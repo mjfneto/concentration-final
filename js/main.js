@@ -26,8 +26,12 @@ var icons = [
 $(document).ready(function() {
   $(".start-button").on("click", function() {
     playGame();
-    startTimer();
+    var timer = setInterval("startTimer()", 1000);
     $(".start-button").off("click");
+    $(".timer").toggleClass("-active");
+    $(".restart-button").on("click", function() {
+      clearInterval(timer);
+    });
   });
   window.alert("Welcome to Concentration! Press the start button to begin.");
 });
@@ -107,19 +111,18 @@ function flipCardEvaluate() {
   });
 }
 
+var seconds = 0;
+var minutes = 0;
+
 function startTimer() {
-  var seconds = 0;
-  var minutes = 0;
-  var timer = setInterval(function() {
-    seconds++;
-    if (seconds === 59) {
-      minutes++;
-      seconds = 0;
-    }
-    var secondsToString = checkNumber(seconds);
-    var minutesToString = checkNumber(minutes);
-    $(".timer > p").text(minutesToString + ":" + secondsToString);
-  }, 1000);
+  seconds++;
+  if (seconds === 59) {
+    minutes++;
+    seconds = 0;
+  }
+  var secondsToString = checkNumber(seconds);
+  var minutesToString = checkNumber(minutes);
+  $(".timer > p").text(minutesToString + ":" + secondsToString);
 }
 
 function checkNumber(nbr) {
