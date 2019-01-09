@@ -18,7 +18,7 @@ body {
 }
 
 .wrap {
-  margin-top: 5%;
+  margin-top: 10px;
   padding: 25px;
   display: flex;
   flex-direction: row-reverse;
@@ -35,7 +35,7 @@ body {
   min-width: 200px;
   margin-left: 25px;
   border-radius: 25px;
-  background-color: #6cff91;
+  background-color: #fff560;
 }
 
 .stage {
@@ -74,14 +74,14 @@ body {
 }
 
 .flip-card > .flip-card-front {
-  background-color: #ff6963;
+  background-color: #ff8163;
   box-shadow: 6px 7px 30px -11px rgba(48, 2, 48, 1);
   border-radius: 15px;
   transition: transform 1s;
 }
 
 .flip-card > .flip-card-back {
-  background-color: #ccb972;
+  background-color: #ffd492;
   border-radius: 15px;
 }
 
@@ -135,13 +135,14 @@ body {
   border-radius: 25px;
   box-shadow: 6px 7px 30px -11px rgba(48, 2, 48, 1);
   border-right: none;
-  margin: 0 auto;
+  margin: 5% auto;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
 
 .timer > p {
-  margin: 0 0 10px 0;
+  margin: 0;
   text-align: center;
   font-size: 45px;
+  color: #ff8163;
 }
