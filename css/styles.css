@@ -112,8 +112,8 @@ body {
 .start-button,
 .restart-button {
   display: inline-block;
-  width: 50%;
   border: none;
+  width: 100%;
   background-color: transparent;
   font-size: 45px;
   text-transform: uppercase;
