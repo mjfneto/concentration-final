@@ -27,7 +27,8 @@ var triesCount = 0;
 
 $(document).ready(function() {
   $(".start-button").on("mouseup", startTimer);
-  window.alert("Welcome to Concentration! Hit ▶ to begin.");
+  window.alert(`Welcome to Concentration!
+   Hit ▶ to begin, and ↺ to restart.`);
 });
 
 function getRandomIndexes(length) {
