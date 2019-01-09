@@ -26,20 +26,7 @@ var icons = [
 var triesCount = 0;
 
 $(document).ready(function() {
-  $(".start-button").on("mouseup", function() {
-    playGame();
-    var timer = setInterval("startTimer()", 1000);
-    $(".menu").addClass("-active");
-    $(".restart-button").on("mouseup", function() {
-      clearInterval(timer);
-      playGame();
-      $(".menu").removeClass("-active");
-      $(".minutes").text("00");
-      $(".seconds").text("00");
-      $(".tries").text("0");
-      $(".pairs").text("0");
-    });
-  });
+  $(".start-button").on("mouseup", startTimer);
   window.alert("Welcome to Concentration! Hit ▶ to begin.");
 });
 
@@ -125,25 +112,51 @@ function flipCardEvaluate() {
 }
 
 function startTimer() {
-  var mnts, scnds;
-  mnts = Number($(".minutes").text());
-  scnds = Number($(".seconds").text());
-  scnds++;
-  if (scnds === 60) {
-    scnds = 0;
-    mnts = mnts + 1;
+  $(".menu").addClass("-active");
+
+  playGame();
+
+  var timer = setInterval(count, 1000);
+
+  $(".restart-button").on("mouseup", function() {
+    clearInterval(timer);
+    $(".menu").removeClass("-active");
+    $(".minutes").text("00");
+    $(".seconds").text("00");
+    $(".tries").text("0");
+    $(".pairs").text("0");
+  });
+
+  function count() {
+    if ($('.flip-card[style*="hidden"]').length < 16) {
+      var mnts, scnds;
+      mnts = Number($(".minutes").text());
+      scnds = Number($(".seconds").text());
+      scnds++;
+      if (scnds === 60) {
+        scnds = 0;
+        mnts = mnts + 1;
+      }
+      $(".seconds").text(checkNumber(scnds));
+      $(".minutes").text(checkNumber(mnts));
+    }
+    if ($('.flip-card[style*="hidden"]').length === 16) {
+      clearInterval(timer);
+      $(".menu").removeClass("-active");
+      $(".minutes").text("00");
+      $(".seconds").text("00");
+      $(".tries").text("0");
+      $(".pairs").text("0");
+    }
   }
 
-  $(".seconds").text(checkNumber(scnds));
-  $(".minutes").text(checkNumber(mnts));
-}
-
-function checkNumber(nbr) {
-  if (nbr < 10) {
-    nbr = "0" + nbr;
-    return nbr;
-  } else {
-    return nbr;
+  function checkNumber(nbr) {
+    if (nbr < 10) {
+      nbr = "0" + nbr;
+      return nbr;
+    } else {
+      return nbr;
+    }
   }
 }
 
