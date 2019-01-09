@@ -121,7 +121,7 @@ function startTimer() {
 
   $(".restart-button").on("mouseup", function() {
     clearInterval(timer);
-    $(".menu").removeClass("-active");
+    playGame();
     $(".minutes").text("00");
     $(".seconds").text("00");
     $(".tries").text("0");
