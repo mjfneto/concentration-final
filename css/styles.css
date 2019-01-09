@@ -33,9 +33,23 @@ body {
 .rating-board {
   max-width: 200px;
   min-width: 200px;
-  margin-left: 25px;
   border-radius: 25px;
   background-color: #fff560;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.scores-title {
+  width: 100%;
+  text-align: center;
+}
+
+.rating-list {
+  text-align: center;
+}
+
+.rating-list > li {
+  margin-top: 10px;
 }
 
 .stage {

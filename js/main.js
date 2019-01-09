@@ -24,15 +24,6 @@ var icons = [
 ];
 
 $(document).ready(function() {
-  $(".start-button").on("click", function() {
-    playGame();
-    var timer = setInterval("startTimer()", 1000);
-    $(".start-button").off("click");
-    $(".timer").toggleClass("-active");
-    $(".restart-button").on("click", function() {
-      clearInterval(timer);
-    });
-  });
   window.alert("Welcome to Concentration! Press the start button to begin.");
 });
 
