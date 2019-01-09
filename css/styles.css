@@ -120,6 +120,14 @@ body {
   padding: 10px 0;
 }
 
+.start-button {
+  color: #55ff2f;
+}
+
+.restart-button {
+  color: #e86904;
+}
+
 .start-button,
 .restart-button {
   display: inline-block;
