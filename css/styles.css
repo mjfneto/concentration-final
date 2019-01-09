@@ -18,7 +18,6 @@ body {
 }
 
 .second-container {
-  margin-top: 10px;
   padding: 25px;
   display: flex;
   flex-direction: row-reverse;
@@ -167,7 +166,7 @@ body {
   justify-content: space-between;
   flex-direction: row-reverse;
   width: 100%;
-  margin: 5% auto;
+  margin: 25px auto;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
 }
