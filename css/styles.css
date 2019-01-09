@@ -125,7 +125,7 @@ body {
 }
 
 .restart-button {
-  color: #e86904;
+  color: #ff8163;
 }
 
 .start-button,
@@ -183,6 +183,7 @@ body {
 
 .wrap.-time {
   margin-left: 10px;
+  padding-top: 8px;
 }
 
 .wrap.-buttons {
@@ -192,7 +193,7 @@ body {
 .menu .seconds,
 .menu .colon,
 .menu .minutes {
-  margin: 0;
+  display: inline-block;
   text-align: center;
   font-size: 45px;
   color: #ff8163;
