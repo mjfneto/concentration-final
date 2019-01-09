@@ -36,9 +36,11 @@ $(document).ready(function() {
       $(".menu").removeClass("-active");
       $(".minutes").text("00");
       $(".seconds").text("00");
+      $(".tries").text("0");
+      $(".pairs").text("0");
     });
   });
-  window.alert("Welcome to Concentration! Press the start button to begin.");
+  window.alert("Welcome to Concentration! Hit ▶ to begin.");
 });
 
 function getRandomIndexes(length) {
