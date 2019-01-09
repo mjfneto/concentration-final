@@ -109,23 +109,37 @@ body {
   padding: 10px 0;
 }
 
-.start-button,
-.restart-button {
+.start-button {
+  display: inline-block;
+  width: 50%;
   border: none;
   background-color: transparent;
   font-size: 45px;
   text-transform: uppercase;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
 }
 
-.timer.-active > .start-button {
+.restart-button {
+  display: inline-block;
+  width: 50%;
+  border: none;
+  background-color: transparent;
+  font-size: 45px;
+  text-transform: uppercase;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.menu.-active > .start-button {
   display: none;
 }
 
-.timer > .restart-button {
+.menu > .restart-button {
   display: none;
 }
 
-.timer.-active > .restart-button {
+.menu.-active > .restart-button {
   display: block;
 }
 
@@ -138,9 +152,9 @@ body {
   transform: rotateY(180deg);
 }
 
-.timer {
+.menu {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   flex-direction: row-reverse;
   width: 100%;
   text-align: center;
@@ -154,7 +168,13 @@ body {
     "Lucida Sans", Arial, sans-serif;
 }
 
-.timer > p {
+.wrap-time {
+  width: 50%;
+}
+
+.menu .seconds,
+.menu .colon,
+.menu .minutes {
   margin: 0;
   text-align: center;
   font-size: 45px;
