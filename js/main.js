@@ -23,6 +23,8 @@ var icons = [
   "🙊"
 ];
 
+var triesCount = 0;
+
 $(document).ready(function() {
   $(".start-button").on("mouseup", function() {
     playGame();
@@ -87,6 +89,8 @@ function playGame() {
 }
 
 function flipCardEvaluate() {
+  var triesCount = 0;
+  var pairsFound = 0;
   var shown = [];
   $(".flip-card").on("click", function() {
     $(this).toggleClass("rotate");
@@ -98,11 +102,15 @@ function flipCardEvaluate() {
     if (shown.length > 2 && shown[0] !== shown[1]) {
       shown = [];
       $(".flip-card.rotate").toggleClass("rotate");
+      triesCount++;
+      logTries(triesCount);
     } else if (shown.length >= 2 && shown[0] === shown[1]) {
       shown = [];
       $(".flip-card.rotate")
         .css("visibility", "hidden")
         .removeClass("rotate");
+      pairsFound = Math.floor($('.flip-card[style*="hidden"]').length / 2);
+      countPairs(pairsFound);
       if ($(".grid > div[style]").length >= 16) {
         window.alert(
           "Congratulations! You have found all the " +
@@ -135,4 +143,12 @@ function checkNumber(nbr) {
   } else {
     return nbr;
   }
+}
+
+function countPairs(nbr) {
+  $(".pairs").text(nbr);
+}
+
+function logTries(nbr) {
+  $(".tries").text(nbr);
 }

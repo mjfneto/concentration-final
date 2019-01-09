@@ -39,9 +39,20 @@ body {
     "Lucida Sans", Arial, sans-serif;
 }
 
-.scores-title {
+.scores-title,
+.pairs-title,
+.tries-title {
   width: 100%;
   text-align: center;
+}
+
+.tries,
+.pairs {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  font-size: 45px;
+  color: #ff8163;
 }
 
 .rating-list {
