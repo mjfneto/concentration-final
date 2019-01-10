@@ -13,7 +13,7 @@ body {
 .main-container {
   display: flex;
   flex-direction: column;
-  width: 700px;
+  width: 750px;
   margin: 0 auto;
 }
 
@@ -30,8 +30,8 @@ body {
 }
 
 .rating-board {
-  max-width: 200px;
-  min-width: 200px;
+  max-width: 275px;
+  min-width: 275px;
   border-radius: 25px;
   background-color: #fff560;
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
@@ -56,10 +56,28 @@ body {
 
 .rating-list {
   text-align: center;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
-.rating-list > li {
-  margin-top: 10px;
+.rating-list > .star {
+  display: inline-block;
+  width: 50%;
+}
+
+.rating-list > .top {
+  display: inline-block;
+  width: 50%;
+}
+
+.tries-counter {
+  text-align: center;
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .stage {
