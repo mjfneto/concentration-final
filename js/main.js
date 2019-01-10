@@ -81,32 +81,38 @@ function flipCardEvaluate() {
   var pairsFound = 0;
   var shown = [];
   $(".flip-card").on("click", function() {
-    console.log($(this));
-    console.log(this);
-    $(this).toggleClass("rotate");
-    shown.push(
-      $(this)
-        .find("div.flip-card-back")
-        .text()
-    );
-    if (shown.length > 2 && shown[0] !== shown[1]) {
-      shown = [];
-      $(".flip-card.rotate").toggleClass("rotate");
-      triesCount++;
-      logTries(triesCount);
-    } else if (shown.length >= 2 && shown[0] === shown[1]) {
-      shown = [];
-      $(".flip-card.rotate")
-        .css("visibility", "hidden")
-        .removeClass("rotate");
-      pairsFound = Math.floor($('.flip-card[style*="hidden"]').length / 2);
-      countPairs(pairsFound);
-      if ($(".grid > div[style]").length >= 16) {
-        window.alert(
-          "Congratulations! You have found all the " +
-            $(".grid > div[style]").length / 2 +
-            " pairs of cards."
-        );
+    console.log($(".flip-card.rotate"));
+    var flippedCard = $(this);
+    if (!flippedCard.attr("name")) {
+      if (shown.length === 0) {
+        flippedCard.attr("name", "marked");
+      }
+      flippedCard.addClass("rotate");
+      shown.push(flippedCard.find("div.flip-card-back").text());
+      console.log(shown);
+      console.log(shown.length);
+      if (shown.length === 2) {
+        $('.flip-card[name*="marked"]').removeAttr("name");
+      }
+      if (shown.length > 2 && shown[0] !== shown[1]) {
+        shown = [];
+        $(".flip-card.rotate").toggleClass("rotate");
+        triesCount++;
+        logTries(triesCount);
+      } else if (shown.length >= 2 && shown[0] === shown[1]) {
+        shown = [];
+        $(".flip-card.rotate")
+          .css("visibility", "hidden")
+          .removeClass("rotate");
+        pairsFound = Math.floor($('.flip-card[style*="hidden"]').length / 2);
+        countPairs(pairsFound);
+        if ($(".grid > div[style]").length >= 16) {
+          window.alert(
+            "Congratulations! You have found all the " +
+              $(".grid > div[style]").length / 2 +
+              " pairs of cards."
+          );
+        }
       }
     }
   });
