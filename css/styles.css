@@ -140,7 +140,7 @@ body {
   text-align: center;
 }
 
-.menu.-active .start-button {
+.wrap.-buttons.-active .start-button {
   display: none;
 }
 
@@ -148,7 +148,7 @@ body {
   display: none;
 }
 
-.menu.-active .restart-button {
+.wrap.-buttons.-active .restart-button {
   display: inline-block;
 }
 

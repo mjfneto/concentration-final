@@ -23,8 +23,6 @@ var icons = [
   "🙊"
 ];
 
-var triesCount = 0;
-
 $(document).ready(function() {
   $(".start-button").on("mouseup", startTimer);
   window.alert(`Welcome to Concentration!
@@ -83,6 +81,8 @@ function flipCardEvaluate() {
   var pairsFound = 0;
   var shown = [];
   $(".flip-card").on("click", function() {
+    console.log($(this));
+    console.log(this);
     $(this).toggleClass("rotate");
     shown.push(
       $(this)
@@ -113,7 +113,7 @@ function flipCardEvaluate() {
 }
 
 function startTimer() {
-  $(".menu").addClass("-active");
+  $(".wrap.-buttons").addClass("-active");
 
   playGame();
 
@@ -121,6 +121,7 @@ function startTimer() {
 
   $(".restart-button").on("mouseup", function() {
     clearInterval(timer);
+    $(".wrap.-buttons").removeClass("-active");
     playGame();
     $(".minutes").text("00");
     $(".seconds").text("00");
@@ -143,7 +144,7 @@ function startTimer() {
     }
     if ($('.flip-card[style*="hidden"]').length === 16) {
       clearInterval(timer);
-      $(".menu").removeClass("-active");
+      $(".wrap.-buttons").removeClass("-active");
       $(".minutes").text("00");
       $(".seconds").text("00");
       $(".tries").text("0");
