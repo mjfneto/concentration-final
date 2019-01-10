@@ -78,7 +78,6 @@ function playGame() {
 
 function flipCardEvaluate() {
   var triesCount = 0;
-  var pairsFound = 0;
   var shown = [];
   $(".flip-card").on("click", function() {
     var flippedCard = $(this);
@@ -101,8 +100,6 @@ function flipCardEvaluate() {
         $(".flip-card.rotate")
           .css("visibility", "hidden")
           .removeClass("rotate");
-        pairsFound = Math.floor($('.flip-card[style*="hidden"]').length / 2);
-        countPairs(pairsFound);
         if ($(".grid > div[style]").length >= 16) {
           window.alert(
             "Congratulations! You have found all the " +
@@ -129,7 +126,6 @@ function startTimer() {
     $(".minutes").text("00");
     $(".seconds").text("00");
     $(".tries").text("0");
-    $(".pairs").text("0");
   });
 
   function count() {
@@ -145,13 +141,16 @@ function startTimer() {
       $(".seconds").text(checkNumber(scnds));
       $(".minutes").text(checkNumber(mnts));
     }
-    if ($('.flip-card[style*="hidden"]').length === 16) {
+    if ($('.flip-card[style*="hidden"]').length === 2) {
       clearInterval(timer);
       $(".wrap.-buttons").removeClass("-active");
+      let scoreTries = Number($(".tries").text());
+      let scoreMinutes = Number($(".minutes").text());
+      let scoreSeconds = Number($(".seconds").text());
+      evaluateScore(scoreTries, scoreMinutes, scoreSeconds);
       $(".minutes").text("00");
       $(".seconds").text("00");
       $(".tries").text("0");
-      $(".pairs").text("0");
     }
   }
 
@@ -165,10 +164,14 @@ function startTimer() {
   }
 }
 
-function countPairs(nbr) {
-  $(".pairs").text(nbr);
-}
-
 function logTries(nbr) {
   $(".tries").text(nbr);
+}
+
+function evaluateScore(tries, minutes, seconds) {
+  if (tries === 1) {
+    $(".top.-first").text(tries + " try in " + minutes + ":" + seconds);
+  } else {
+    $(".top.-first").text(tries + " tries in " + minutes + ":" + seconds);
+  }
 }
