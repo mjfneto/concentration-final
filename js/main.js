@@ -81,7 +81,6 @@ function flipCardEvaluate() {
   var pairsFound = 0;
   var shown = [];
   $(".flip-card").on("click", function() {
-    console.log($(".flip-card.rotate"));
     var flippedCard = $(this);
     if (!flippedCard.attr("name")) {
       if (shown.length === 0) {
@@ -89,8 +88,6 @@ function flipCardEvaluate() {
       }
       flippedCard.addClass("rotate");
       shown.push(flippedCard.find("div.flip-card-back").text());
-      console.log(shown);
-      console.log(shown.length);
       if (shown.length === 2) {
         $('.flip-card[name*="marked"]').removeAttr("name");
       }
