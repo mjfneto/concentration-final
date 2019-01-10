@@ -65,6 +65,8 @@ body {
 .rating-list > .star {
   display: inline-block;
   width: 50%;
+  text-align: left;
+  padding-left: 25px;
 }
 
 .rating-list > .top {
