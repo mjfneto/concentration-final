@@ -23,6 +23,8 @@ var icons = [
   "🙊"
 ];
 
+let scoreBoard = [];
+
 $(document).ready(function() {
   $(".start-button").on("mouseup", startTimer);
   window.alert(`Welcome to Concentration!
@@ -150,7 +152,9 @@ function startTimer() {
       let scoreTries = Number($(".tries").text());
       let scoreMinutes = Number($(".minutes").text());
       let scoreSeconds = Number($(".seconds").text());
-      evaluateScore(scoreTries, scoreMinutes, scoreSeconds);
+      let sum = scoreTries + scoreMinutes + scoreSeconds;
+      let score = [scoreTries, scoreMinutes, scoreSeconds, sum];
+      evaluateAndPlaceScore(score);
       $(".minutes").text("00");
       $(".seconds").text("00");
       $(".tries").text("0");
@@ -171,27 +175,31 @@ function logTries(nbr) {
   $(".tries").text(nbr);
 }
 
-function evaluateScore(tries, minutes, seconds) {
-  let currentScore = [tries, minutes, seconds];
-  let scoreStorage = {
-    first: [],
-    second: [],
-    third: [],
-    fourth: [],
-    fifth: []
-  };
-  if (scoreStorage.first[0] === undefined) {
-    scoreStorage.first[0] = currentScore[0];
-    scoreStorage.first[1] = currentScore[1];
-    scoreStorage.first[2] = currentScore[2];
-    console.log(scoreStorage.first);
-  } else {
-    console.log(tries, minutes, seconds);
-    console.log(scoreStorage.first);
-  }
-  if (tries === 1) {
-    $(".top.-first").text(tries + " try in " + minutes + ":" + seconds);
-  } else {
-    $(".top.-first").text(tries + " tries in " + minutes + ":" + seconds);
+function evaluateAndPlaceScore(score) {
+  console.log(score);
+  arrivingSum = score[3];
+  if (scoreBoard.length === 0) {
+    scoreBoard.push(score);
+    console.log("firstly, scoreBoard's length is " + scoreBoard.length);
+  } else if (scoreBoard.length >= 1) {
+    for (let i = 0; i <= scoreBoard.length; i++) {
+      console.log(i);
+      console.log(scoreBoard.length);
+      if (i >= scoreBoard.length) {
+        scoreBoard.push(score);
+        break;
+      }
+      let itemSum = scoreBoard[i][3];
+      if (arrivingSum > itemSum) {
+        console.log("It's bigger than the item with index " + i);
+        continue;
+      }
+      if (arrivingSum < itemSum) {
+        console.log("It's smaller than the item with index " + i);
+        scoreBoard.splice(i, 0, score);
+        break;
+      }
+    }
+    console.log(scoreBoard);
   }
 }
