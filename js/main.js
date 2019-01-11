@@ -79,7 +79,7 @@ function playGame() {
 function flipCardEvaluate() {
   var triesCount = 0;
   var shown = [];
-  $(".flip-card").on("click", function() {
+  $(".flip-card").on("mouseup", function() {
     var flippedCard = $(this);
     if (!flippedCard.attr("name")) {
       if (shown.length === 0) {
@@ -121,8 +121,9 @@ function startTimer() {
 
   $(".restart-button").on("mouseup", function() {
     clearInterval(timer);
-    $(".wrap.-buttons").removeClass("-active");
     playGame();
+    $(".flip-card").off("mouseup");
+    $(".wrap.-buttons").removeClass("-active");
     $(".minutes").text("00");
     $(".seconds").text("00");
     $(".tries").text("0");
@@ -144,6 +145,8 @@ function startTimer() {
     if ($('.flip-card[style*="hidden"]').length === 2) {
       clearInterval(timer);
       $(".wrap.-buttons").removeClass("-active");
+      playGame();
+      $(".flip-card").off("mouseup");
       let scoreTries = Number($(".tries").text());
       let scoreMinutes = Number($(".minutes").text());
       let scoreSeconds = Number($(".seconds").text());
