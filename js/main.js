@@ -100,7 +100,7 @@ function flipCardEvaluate() {
         $(".flip-card.rotate")
           .css("visibility", "hidden")
           .removeClass("rotate");
-        if ($(".grid > div[style]").length >= 16) {
+        if ($(".grid > div[style]").length >= 2) {
           window.alert(
             "Congratulations! You have found all the " +
               $(".grid > div[style]").length / 2 +
@@ -169,6 +169,23 @@ function logTries(nbr) {
 }
 
 function evaluateScore(tries, minutes, seconds) {
+  let currentScore = [tries, minutes, seconds];
+  let scoreStorage = {
+    first: [],
+    second: [],
+    third: [],
+    fourth: [],
+    fifth: []
+  };
+  if (scoreStorage.first[0] === undefined) {
+    scoreStorage.first[0] = currentScore[0];
+    scoreStorage.first[1] = currentScore[1];
+    scoreStorage.first[2] = currentScore[2];
+    console.log(scoreStorage.first);
+  } else {
+    console.log(tries, minutes, seconds);
+    console.log(scoreStorage.first);
+  }
   if (tries === 1) {
     $(".top.-first").text(tries + " try in " + minutes + ":" + seconds);
   } else {
