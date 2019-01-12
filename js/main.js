@@ -100,7 +100,7 @@ function flipCardEvaluate() {
         $(".flip-card.rotate")
           .css("visibility", "hidden")
           .removeClass("rotate");
-        if ($(".grid > div[style]").length >= 2) {
+        if ($(".grid > div[style]").length >= 16) {
           window.alert(
             "Congratulations! You have found all the " +
               $(".grid > div[style]").length / 2 +
@@ -142,7 +142,7 @@ function startTimer() {
       $(".seconds").text(checkNumber(scnds));
       $(".minutes").text(checkNumber(mnts));
     }
-    if ($('.flip-card[style*="hidden"]').length === 2) {
+    if ($('.flip-card[style*="hidden"]').length === 16) {
       clearInterval(timer);
       $(".wrap.-buttons").removeClass("-active");
       playGame();
@@ -150,7 +150,7 @@ function startTimer() {
       let scoreTries = Number($(".tries").text());
       let scoreMinutes = Number($(".minutes").text());
       let scoreSeconds = Number($(".seconds").text());
-      let sum = scoreTries + scoreMinutes + scoreSeconds;
+      let sum = scoreTries + 60 * scoreMinutes + scoreSeconds;
       let score = [scoreTries, scoreMinutes, scoreSeconds, sum];
       evaluateScoreAndTrim(score);
       $(".minutes").text("00");
@@ -178,11 +178,9 @@ let scoreBoard = [];
 
 function evaluateScoreAndTrim(array) {
   arrivingSum = array[3];
-  console.log(`Arriving score is ${array}`);
   for (let i = 0; i <= scoreBoard.length; i++) {
     if (i === scoreBoard.length) {
       scoreBoard.push(array);
-      console.log(`New score > AFTER item ${i - 1}`);
       break;
     }
     if (
@@ -190,7 +188,6 @@ function evaluateScoreAndTrim(array) {
       array[1] === scoreBoard[i][1] &&
       array[2] === scoreBoard[i][2]
     ) {
-      console.log("Repeated score");
       break;
     }
     let itemSum = scoreBoard[i][3];
@@ -198,26 +195,19 @@ function evaluateScoreAndTrim(array) {
       continue;
     }
     if (arrivingSum < itemSum) {
-      console.log(`New score > BEFORE item ${i}`);
       scoreBoard.splice(i, 0, array);
       break;
     }
   }
   if (scoreBoard.length > topScores.length) {
-    console.log("scores board length is 6. Trim is done.");
     scoreBoard.splice(5, 1);
   } else {
-    console.log("placeScore() gets activated");
     placeScore();
   }
 }
 
 function placeScore() {
-  console.log("top scores length is " + topScores.length);
-  console.log("scores board length is " + scoreBoard.length);
-  console.log(scoreBoard);
   scoreBoard.forEach(function(item, index) {
-    console.log(`item with the index of ${index} in scoreBoard is ${item}`);
     if (item[0] === 1) {
       topScores[index].textContent =
         item[0] + " try in " + item[1] + ":" + item[2];
