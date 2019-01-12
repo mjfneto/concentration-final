@@ -113,7 +113,8 @@ function flipCardEvaluate() {
 }
 
 function startTimer() {
-  $(".wrap.-buttons").addClass("-active");
+  $(".wrap-buttons").addClass("-active");
+  $(".menu").removeClass("-active");
 
   playGame();
 
@@ -123,10 +124,11 @@ function startTimer() {
     clearInterval(timer);
     playGame();
     $(".flip-card").off("mouseup");
-    $(".wrap.-buttons").removeClass("-active");
+    $(".wrap-buttons").removeClass("-active");
     $(".minutes").text("00");
     $(".seconds").text("00");
     $(".tries").text("0");
+    $(".menu").addClass("-active");
   });
 
   function count() {
@@ -144,7 +146,7 @@ function startTimer() {
     }
     if ($('.flip-card[style*="hidden"]').length === 16) {
       clearInterval(timer);
-      $(".wrap.-buttons").removeClass("-active");
+      $(".wrap-buttons").removeClass("-active");
       playGame();
       $(".flip-card").off("mouseup");
       let scoreTries = Number($(".tries").text());
@@ -156,6 +158,7 @@ function startTimer() {
       $(".minutes").text("00");
       $(".seconds").text("00");
       $(".tries").text("0");
+      $(".menu").addClass("-active");
     }
   }
 
