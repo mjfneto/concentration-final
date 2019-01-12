@@ -23,8 +23,6 @@ var icons = [
   "🙊"
 ];
 
-let scoreBoard = [];
-
 $(document).ready(function() {
   $(".start-button").on("mouseup", startTimer);
   window.alert(`Welcome to Concentration!
@@ -154,7 +152,7 @@ function startTimer() {
       let scoreSeconds = Number($(".seconds").text());
       let sum = scoreTries + scoreMinutes + scoreSeconds;
       let score = [scoreTries, scoreMinutes, scoreSeconds, sum];
-      evaluateAndPlaceScore(score);
+      evaluateScore(score);
       $(".minutes").text("00");
       $(".seconds").text("00");
       $(".tries").text("0");
@@ -175,26 +173,44 @@ function logTries(nbr) {
   $(".tries").text(nbr);
 }
 
-function evaluateAndPlaceScore(score) {
-  console.log(score);
+let topScores = $(".top");
+let scoreBoard = [];
+
+function evaluateScore(score) {
   arrivingSum = score[3];
   for (let i = 0; i <= scoreBoard.length; i++) {
-    console.log("Turn " + i);
-    console.log(scoreBoard.length);
     if (i >= scoreBoard.length) {
       scoreBoard.push(score);
       break;
     }
     let itemSum = scoreBoard[i][3];
     if (arrivingSum > itemSum) {
-      console.log("It's bigger than the item with index " + i);
       continue;
     }
     if (arrivingSum < itemSum) {
-      console.log("It's smaller than the item with index " + i);
       scoreBoard.splice(i, 0, score);
       break;
     }
   }
-  console.log(scoreBoard);
+  placeScore();
+}
+
+function placeScore() {
+  for (let i = 0; i < scoreBoard.length; i++) {
+    if (scoreBoard[i][0] === 1) {
+      topScores[i].textContent =
+        scoreBoard[i][0] +
+        " try in " +
+        scoreBoard[i][1] +
+        ":" +
+        scoreBoard[i][2];
+    } else {
+      topScores[i].textContent =
+        scoreBoard[i][0] +
+        " tries in " +
+        scoreBoard[i][1] +
+        ":" +
+        scoreBoard[i][2];
+    }
+  }
 }
