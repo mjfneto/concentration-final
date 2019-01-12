@@ -178,28 +178,23 @@ function logTries(nbr) {
 function evaluateAndPlaceScore(score) {
   console.log(score);
   arrivingSum = score[3];
-  if (scoreBoard.length === 0) {
-    scoreBoard.push(score);
-    console.log("firstly, scoreBoard's length is " + scoreBoard.length);
-  } else if (scoreBoard.length >= 1) {
-    for (let i = 0; i <= scoreBoard.length; i++) {
-      console.log(i);
-      console.log(scoreBoard.length);
-      if (i >= scoreBoard.length) {
-        scoreBoard.push(score);
-        break;
-      }
-      let itemSum = scoreBoard[i][3];
-      if (arrivingSum > itemSum) {
-        console.log("It's bigger than the item with index " + i);
-        continue;
-      }
-      if (arrivingSum < itemSum) {
-        console.log("It's smaller than the item with index " + i);
-        scoreBoard.splice(i, 0, score);
-        break;
-      }
+  for (let i = 0; i <= scoreBoard.length; i++) {
+    console.log("Turn " + i);
+    console.log(scoreBoard.length);
+    if (i >= scoreBoard.length) {
+      scoreBoard.push(score);
+      break;
     }
-    console.log(scoreBoard);
+    let itemSum = scoreBoard[i][3];
+    if (arrivingSum > itemSum) {
+      console.log("It's bigger than the item with index " + i);
+      continue;
+    }
+    if (arrivingSum < itemSum) {
+      console.log("It's smaller than the item with index " + i);
+      scoreBoard.splice(i, 0, score);
+      break;
+    }
   }
+  console.log(scoreBoard);
 }
