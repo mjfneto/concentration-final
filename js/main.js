@@ -152,35 +152,45 @@ function startTimer() {
       let scoreSeconds = Number($(".seconds").text());
       let sum = scoreTries + scoreMinutes + scoreSeconds;
       let score = [scoreTries, scoreMinutes, scoreSeconds, sum];
-      evaluateScore(score);
+      evaluateScoreAndTrim(score);
       $(".minutes").text("00");
       $(".seconds").text("00");
       $(".tries").text("0");
     }
   }
 
-  function checkNumber(nbr) {
-    if (nbr < 10) {
-      nbr = "0" + nbr;
-      return nbr;
+  function checkNumber(number) {
+    if (number < 10) {
+      number = "0" + number;
+      return number;
     } else {
-      return nbr;
+      return number;
     }
   }
 }
 
-function logTries(nbr) {
-  $(".tries").text(nbr);
+function logTries(number) {
+  $(".tries").text(number);
 }
 
 let topScores = $(".top");
 let scoreBoard = [];
 
-function evaluateScore(score) {
-  arrivingSum = score[3];
+function evaluateScoreAndTrim(array) {
+  arrivingSum = array[3];
+  console.log(`Arriving score is ${array}`);
   for (let i = 0; i <= scoreBoard.length; i++) {
-    if (i >= scoreBoard.length) {
-      scoreBoard.push(score);
+    if (i === scoreBoard.length) {
+      scoreBoard.push(array);
+      console.log(`New score > AFTER item ${i - 1}`);
+      break;
+    }
+    if (
+      array[0] === scoreBoard[i][0] &&
+      array[1] === scoreBoard[i][1] &&
+      array[2] === scoreBoard[i][2]
+    ) {
+      console.log("Repeated score");
       break;
     }
     let itemSum = scoreBoard[i][3];
@@ -188,29 +198,32 @@ function evaluateScore(score) {
       continue;
     }
     if (arrivingSum < itemSum) {
-      scoreBoard.splice(i, 0, score);
+      console.log(`New score > BEFORE item ${i}`);
+      scoreBoard.splice(i, 0, array);
       break;
     }
   }
-  placeScore();
+  if (scoreBoard.length > topScores.length) {
+    console.log("scores board length is 6. Trim is done.");
+    scoreBoard.splice(5, 1);
+  } else {
+    console.log("placeScore() gets activated");
+    placeScore();
+  }
 }
 
 function placeScore() {
-  for (let i = 0; i < scoreBoard.length; i++) {
-    if (scoreBoard[i][0] === 1) {
-      topScores[i].textContent =
-        scoreBoard[i][0] +
-        " try in " +
-        scoreBoard[i][1] +
-        ":" +
-        scoreBoard[i][2];
+  console.log("top scores length is " + topScores.length);
+  console.log("scores board length is " + scoreBoard.length);
+  console.log(scoreBoard);
+  scoreBoard.forEach(function(item, index) {
+    console.log(`item with the index of ${index} in scoreBoard is ${item}`);
+    if (item[0] === 1) {
+      topScores[index].textContent =
+        item[0] + " try in " + item[1] + ":" + item[2];
     } else {
-      topScores[i].textContent =
-        scoreBoard[i][0] +
-        " tries in " +
-        scoreBoard[i][1] +
-        ":" +
-        scoreBoard[i][2];
+      topScores[index].textContent =
+        item[0] + " tries in " + item[1] + ":" + item[2];
     }
-  }
+  });
 }
