@@ -24,9 +24,13 @@ var icons = [
 ];
 
 $(document).ready(function() {
+  $(".modal > .message").text(
+    "Welcome to Concentration! Hit ▶ to begin, and ↺ to reload."
+  );
+  $(".modal-button").on("mouseup", function() {
+    $(".pseudo-wrap-modal").addClass("-active");
+  });
   $(".start-button").on("mouseup", startTimer);
-  window.alert(`Welcome to Concentration!
-   Hit ▶ to begin, and ↺ to restart.`);
 });
 
 function getRandomIndexes(length) {
@@ -100,13 +104,6 @@ function flipCardEvaluate() {
         $(".flip-card.rotate")
           .css("visibility", "hidden")
           .removeClass("rotate");
-        if ($(".grid > div[style]").length >= 16) {
-          window.alert(
-            "Congratulations! You have found all the " +
-              $(".grid > div[style]").length / 2 +
-              " pairs of cards."
-          );
-        }
       }
     }
   });
@@ -159,6 +156,10 @@ function startTimer() {
       $(".seconds").text("00");
       $(".tries").text("0");
       $(".menu").addClass("-active");
+      $(".modal > .message").text(
+        `Congratulations! You have found all the 8 pairs of cards.`
+        );
+      $(".pseudo-wrap-modal").removeClass("-active");
     }
   }
 

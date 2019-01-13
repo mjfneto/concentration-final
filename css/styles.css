@@ -10,6 +10,62 @@ body {
   background-attachment: fixed;
 }
 
+.pseudo-wrap-modal {
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: #222;
+  opacity: 0.5;
+}
+
+.modal {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  transform: translate(-50%, -50%);
+  background-color: #ffd492;
+  border-radius: 25px;
+  border: 15px solid #ff8163;
+  width: 400px;
+  height: 300px;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  color: #ff8163;
+}
+
+.pseudo-wrap-modal.-active,
+.pseudo-wrap-modal.-active ~ .modal {
+  display: none;
+}
+
+.modal > .modal-button {
+  position: absolute;
+  bottom: 15%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100px;
+  height: 48px;
+  border: 5px solid #ff8163;
+  background-color: #4eff75;
+  border-radius: 5px;
+  color: #ff8163;
+  font-family: inherit;
+}
+
+.modal > .modal-button:hover {
+  cursor: pointer;
+}
+
+.modal > .message {
+  width: 90%;
+  margin: 15% auto;
+  font-family: inherit;
+  text-align: center;
+  font-size: 25px;
+}
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -140,7 +196,7 @@ body {
 }
 
 .start-button {
-  color: #55ff2f;
+  color: #4eff75;
 }
 
 .restart-button {
@@ -220,23 +276,23 @@ body {
   color: #ff8163;
 }
 
-.menu > .wrap-modal {
+.menu > .wrap-pop-up {
   display: none;
 }
 
-.menu.-active > .wrap-modal {
+.menu.-active > .wrap-pop-up {
   display: block;
   position: absolute;
   top: 100%;
   left: 25%;
-  animation-name: beatingModal;
+  animation-name: beatingPop-up;
   animation-duration: 1200ms;
   animation-timing-function: linear;
   animation-iteration-count: infinite;
   z-index: 1;
 }
 
-.menu.-active > .wrap-modal > .modal {
+.menu.-active > .wrap-pop-up > .pop-up {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -246,9 +302,10 @@ body {
   border-radius: 25px;
   background-color: #fff560;
   color: #ff8163;
+  box-shadow: 6px 7px 30px -11px rgba(48, 2, 48, 1);
 }
 
-.menu.-active > .wrap-modal > .modal::before {
+.menu.-active > .wrap-pop-up > .pop-up::before {
   content: "";
   width: 20px;
   height: 20px;
@@ -259,9 +316,10 @@ body {
   top: 0;
   left: 12%;
   transform: rotate(45deg) translate(-25%, -50%);
+  z-index: -1;
 }
 
-@keyframes beatingModal {
+@keyframes beatingPop-up {
   0% {
     transform: scale(1);
   }
