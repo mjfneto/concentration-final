@@ -5,7 +5,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <title>Concentration</title>
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="css/styles.css" />
+    <link rel="stylesheet" href="css/base.css" />
+    <link rel="stylesheet" href="css/modal.css" />
+    <link rel="stylesheet" href="css/main-container.css" />
+    <link rel="stylesheet" href="css/second-container.css" />
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   </head>
 
@@ -26,22 +30,22 @@
       </div>
       <div class="second-container">
         <nav class="rating-board">
-          <p class="scores-title">Top 5 Scores</p>
-          <div class="rating-list">
-            <p class="star">🌟🌟🌟🌟🌟</p>
-            <p class="top">---</p>
-            <p class="star">🌟🌟🌟🌟</p>
-            <p class="top">---</p>
-            <p class="star">🌟🌟🌟</p>
-            <p class="top">---</p>
-            <p class="star">🌟🌟</p>
-            <p class="top">---</p>
-            <p class="star">🌟</p>
-            <p class="top">---</p>
-          </div>
+          <h1 class="scores-title">Top 5 Scores</h1>
+          <ul class="rating-list">
+            <li class="star">🌟🌟🌟🌟🌟</li>
+            <li class="top">---</li>
+            <li class="star">🌟🌟🌟🌟</li>
+            <li class="top">---</li>
+            <li class="star">🌟🌟🌟</li>
+            <li class="top">---</li>
+            <li class="star">🌟🌟</li>
+            <li class="top">---</li>
+            <li class="star">🌟</li>
+            <li class="top">---</li>
+          </ul>
           <div class="tries-counter">
-            <p class="tries-title">Number of Tries</p>
-            <span class="tries">0</span>
+            <h2 class="tries-title">Number of Tries</h2>
+            <h3 class="tries">0</h3>
           </div>
         </nav>
         <main class="stage"><div class="grid"></div></main>
@@ -52,6 +56,6 @@
       <button class="modal-button">Awesome!</button>
       <p class="message"></p>
     </div>
+    <script src="js/main.js"></script>
   </body>
-  <script src="js/main.js"></script>
 </html>
