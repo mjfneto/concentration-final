@@ -1,0 +1,146 @@
+.main-container {
+  display: flex;
+  flex-direction: column;
+  width: 750px;
+  margin: 0 auto;
+}
+
+.menu {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 100%;
+  margin: 25px auto;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
+
+.menu .restart-button {
+  display: none;
+}
+
+.menu .seconds,
+.menu .colon,
+.menu .minutes {
+  display: inline-block;
+  text-align: center;
+  font-size: 45px;
+  color: #ff8163;
+}
+
+.wrap-buttons {
+  margin-right: 10px;
+}
+
+.wrap-buttons.-active .start-button {
+  display: none;
+}
+
+.wrap-buttons.-active .restart-button {
+  display: inline-block;
+}
+
+.wrap-buttons .start-button:hover,
+.wrap-buttons .restart-button:hover {
+  cursor: pointer;
+}
+
+.start-button {
+  color: #4eff75;
+}
+
+.restart-button {
+  color: #ff8163;
+}
+
+.start-button,
+.restart-button {
+  display: inline-block;
+  border: none;
+  width: 100%;
+  background-color: transparent;
+  font-size: 45px;
+  text-transform: uppercase;
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+  text-align: center;
+}
+
+.wrap-time,
+.wrap-buttons {
+  width: 50%;
+  background-color: #fff560;
+  border: 15px solid #8cc1ff;
+  border-radius: 25px;
+  box-shadow: 6px 7px 30px -11px rgba(48, 2, 48, 1);
+  text-align: center;
+}
+
+.wrap-time {
+  margin-left: 10px;
+  padding-top: 8px;
+}
+
+.menu > .wrap-pop-up {
+  display: none;
+}
+
+.menu.-active > .wrap-pop-up {
+  display: block;
+  position: absolute;
+  top: 100%;
+  left: 25%;
+  animation-name: beatingPop-up;
+  animation-duration: 1200ms;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  z-index: 1;
+}
+
+.menu.-active > .wrap-pop-up > .pop-up {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 100px;
+  border: 15px solid #ff8163;
+  border-radius: 25px;
+  background-color: #fff560;
+  color: #ff8163;
+  box-shadow: 6px 7px 30px -11px rgba(48, 2, 48, 1);
+}
+
+.menu.-active > .wrap-pop-up > .pop-up::before {
+  content: "";
+  width: 20px;
+  height: 20px;
+  background-color: #ff8163;
+  position: absolute;
+  top: 0;
+  left: 12%;
+  transform: rotate(45deg) translate(-25%, -50%);
+  z-index: -1;
+}
+
+@keyframes beatingPop-up {
+  0% {
+    transform: scale(1);
+  }
+
+  25% {
+    transform: scale(1.05);
+  }
+
+  50% {
+    transform: scale(1.1);
+  }
+
+  25% {
+    transform: scale(1.05);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
