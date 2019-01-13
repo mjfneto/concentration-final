@@ -1,10 +1,10 @@
-// var iconsThirtytwo = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
+// const iconsThirtytwo = ["🥫", "🍲", "🥘", "🚙", "✈", "🍵",
 //     "🛵", "🥤", "🌷", "🎴", "🏯", "🍕", "👾", "🦎",
 //     "🐦", "🐕", "♈", "♉", "♊", "♋", "♌", "♍",
 //     "♎", "♐", "♑", "♒", "♓", "⛎", "🙈", "🙉",
 //     "🙊", "🚀"];
 
-var icons = [
+const icons = [
   "🛵",
   "🛵",
   "🌷",
@@ -33,8 +33,11 @@ $(document).ready(function() {
   $(".start-button").on("mouseup", startTimer);
 });
 
+/*GETS RANDOM INDEXES BASED ON ICONS ARRAY LENGTH AND STORES THESE NUMBERS
+IN A NEW ARRAY (biggerBox) after checking them.
+*/
 function getRandomIndexes(length) {
-  var biggerBox = [];
+  let biggerBox = [];
   function genRandom() {
     while (biggerBox.length < length) {
       let rndm = Math.floor(Math.random() * 40);
@@ -42,11 +45,11 @@ function getRandomIndexes(length) {
     }
   }
 
-  var checkAndPlaceNumber = function(number) {
+  let checkAndPlaceNumber = function(number) {
     if (biggerBox.includes(number) || number >= length) {
       return genRandom();
     } else {
-      var box = number;
+      let box = number;
       biggerBox.push(box);
       return genRandom();
     }
@@ -56,11 +59,12 @@ function getRandomIndexes(length) {
   return biggerBox;
 }
 
+/*"HANDLES" CARDS BY PLACING ICONS ACCORDING TO THE INDEX GENERATED EARLIER*/
 function cardHandler(array) {
-  var board = [];
-  var shuffledDeck = [];
+  let board = [];
+  let shuffledDeck = [];
   array.forEach(function(item, index) {
-    var frontBack = [];
+    let frontBack = [];
     board[index] = icons[item];
     $('<div class="flip-card">').appendTo($(".grid"));
     frontBack.push($('<div class="flip-card-front">').text("🧠"));
@@ -70,9 +74,10 @@ function cardHandler(array) {
   return shuffledDeck;
 }
 
+/*STARTS A NEW GAME BY "SHUFLLING THE DECK AND "HANDLING" NEW CARDS*/
 function playGame() {
   $(".flip-card").remove();
-  var cardsToBePlaced = cardHandler(getRandomIndexes(icons.length));
+  let cardsToBePlaced = cardHandler(getRandomIndexes(icons.length));
   cardsToBePlaced.forEach(function(item, index) {
     item[0].appendTo($(".flip-card").eq(index));
     item[1].appendTo($(".flip-card").eq(index));
@@ -80,11 +85,12 @@ function playGame() {
   flipCardEvaluate();
 }
 
-function flipCardEvaluate() {
-  var triesCount = 0;
-  var shown = [];
+/*HANDLES CARD "FLIPPING"*/
+function flipCard() {
+  let triesCount = 0;
+  let shown = [];
   $(".flip-card").on("mouseup", function() {
-    var flippedCard = $(this);
+    let flippedCard = $(this);
     if (!flippedCard.attr("name")) {
       if (shown.length === 0) {
         flippedCard.attr("name", "marked");
@@ -109,13 +115,17 @@ function flipCardEvaluate() {
   });
 }
 
+/*HANDLES TIME AND EVALUATES THE STATE OF THE GAME. THIS PART WAS A BIT
+TRICKY FOR ME BECAUSE IN ORDER TO DEAL WITH THE INTERVAL'S VARIABLE SCOPE
+I HAD TO PLACE ALL THE OTHER FUNCTIONS THAT STOP THE INTERVAL INSIDE THE
+SAME FUNCTION (startTimer()), AND IT GOT A BIT "TALL".*/
 function startTimer() {
   $(".wrap-buttons").addClass("-active");
   $(".menu").removeClass("-active");
 
   playGame();
 
-  var timer = setInterval(count, 1000);
+  let timer = setInterval(count, 1000);
 
   $(".restart-button").on("mouseup", function() {
     clearInterval(timer);
@@ -130,7 +140,7 @@ function startTimer() {
 
   function count() {
     if ($('.flip-card[style*="hidden"]').length < 16) {
-      var mnts, scnds;
+      let mnts, scnds;
       mnts = Number($(".minutes").text());
       scnds = Number($(".seconds").text());
       scnds++;
@@ -158,11 +168,12 @@ function startTimer() {
       $(".menu").addClass("-active");
       $(".modal > .message").text(
         `Congratulations! You have found all the 8 pairs of cards.`
-        );
+      );
       $(".pseudo-wrap-modal").removeClass("-active");
     }
   }
-
+  /*IF NUMBER IS SMALLER THAN 10 RETURNS IT WITH A ZERO ON ITS LEFT
+  TO LOOK LIKE A CLOCK.*/
   function checkNumber(number) {
     if (number < 10) {
       number = "0" + number;
@@ -177,6 +188,10 @@ function logTries(number) {
   $(".tries").text(number);
 }
 
+/*BASICALLY, IT HANDLES "REFRESHING" OF THE SCOREBOARD BY STORING THEM
+IN A ARRAY, AND THE VALUES OF  THE NEW ARRAYS (WITH LENGTH 4), ARE USED
+TO CHECK THE BETTER SCORES AND SORT THEM BASED ON A SUM OF THE VALUES
+STORED. A BETTER SCORING SYSTEM IS BEING LOOKED FOR.*/
 let topScores = $(".top");
 let scoreBoard = [];
 
