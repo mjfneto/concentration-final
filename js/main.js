@@ -196,7 +196,7 @@ let topScores = $(".top");
 let scoreBoard = [];
 
 function evaluateScoreAndTrim(array) {
-  arrivingSum = array[3];
+  let arrivingSum = array[3];
   for (let i = 0; i <= scoreBoard.length; i++) {
     if (i === scoreBoard.length) {
       scoreBoard.push(array);
