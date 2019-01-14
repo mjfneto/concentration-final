@@ -82,7 +82,7 @@ function playGame() {
     item[0].appendTo($(".flip-card").eq(index));
     item[1].appendTo($(".flip-card").eq(index));
   });
-  flipCardEvaluate();
+  flipCard();
 }
 
 /*HANDLES CARD "FLIPPING"*/
